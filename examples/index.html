@@ -14,7 +14,10 @@
 		<link href="../datepicker/bootstrap-datepicker.css" rel="stylesheet">
 		<script type="text/javascript" src="../datepicker/bootstrap-datepicker.min.js"></script>
 
+		<!-- Angular -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script type="text/javascript" src="../angular/angular-sanitize.min.js"></script>
+
 		<script type="text/javascript" src="../directives.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</head>
@@ -23,11 +26,21 @@
 
 		<div id="main">
 
+			<h2>Pagintion</h2>
+			<div class="page" ng-bind-html="pageText"></div>
+
+			<div class="paginator">
+				<tw-pagination data-pagesize="8" data-currentpage="1" data-pagecount="4"
+							   change="goToPage" itemcount="items.length" ></tw-pagination>
+			</div>
+
+			<h2>Calendar</h2>
 			<div class="block">
 				<input type="text" tw-calendar ng-model="data.date">
 				Date: {{data.date}} DB format: {{data.date | twDate}}
 			</div>
-			
+
+			<h2>Toggle button</h2>
 			<div class="block">
 				<input type="checkbox" tw-toggle ng-model="data.bool">
 				Boolean value: <b>{{data.bool}}</b>

@@ -1,0 +1,17 @@
+<nav aria-label="Page navigation" ng-show="pages.length > 0">
+    <ul class="pagination">
+        <li ng-show="showPrev">
+            <a href="javascript:void(0);" aria-label="Previous" ng-click="goTo(prev)">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li ng-repeat="page in pages" ng-class="{active: currentPage == page}">
+            <a href="javascript:void(0);" ng-click="goTo(page)">{{page}}</a>
+        </li>
+        <li ng-show="showNext">
+            <a href="javascript:void(0);" aria-label="Next" ng-click="goTo(next)">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

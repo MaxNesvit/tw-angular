@@ -93,31 +93,34 @@ function twToggle($parse) {
 
 function twPagination() {
     return {
-        templateUrl: '/partial/pagination.html',
+        templateUrl: 'partial/pagination.html',
         restrict: 'E',
         scope: {
             itemCount: "=itemcount",
-            pageSize: "=pagesize",
+            /*pageSize: "=pagesize",
             currentPage: "=currentpage",
-            pageCount: "=pagecount",
+            pageCount: "=pagecount",*/
             change: "=change",
         },
 
         link: function (scope, element, attributes) {
 
+			scope.pageSize = $(element).data('pagesize');
             if (!scope.pageSize) {
                 scope.pageSize = 8;
             }
+			scope.currentPage = $(element).data('currentpage');
             if (!scope.currentPage) {
                 scope.currentPage = 1;
             }
+            scope.pageCount = $(element).data('pagecount');
             if (!scope.pageCount) {
                 scope.pageCount = 4;
             }
 
             scope.totalPageCount = function() {
                 var pc = Math.ceil(scope.itemCount / scope.pageSize);
-                console.log(scope.itemCount, pc);
+                console.log(scope.itemCount, scope.pageSize, pc);
                 if (scope.pageCount > pc) {
                     scope.pageCount = pc;
                 }
@@ -156,7 +159,10 @@ function twPagination() {
                 }
                 scope.currentPage = page;
                 scope.setPages();
-                scope.change(scope.currentPage);
+				var firstItem = (scope.currentPage - 1) * scope.pageSize + 1;
+				var lastItem = firstItem + scope.pageSize - 1;
+				if (lastItem > scope.itemCount) lastItem = scope.itemCount;
+                scope.change(scope.currentPage, firstItem, lastItem);
             }
 
             scope.totalPageCount();
