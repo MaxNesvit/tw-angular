@@ -1,4 +1,4 @@
-var exampleApp = angular.module('exampleApp', ['ngSanitize', 'twPagination', 'twCalendar']);
+var exampleApp = angular.module('exampleApp', ['ngSanitize', 'twPagination', 'twCalendar', 'twToggle']);
 
 exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 
@@ -28,12 +28,3 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 
 }]);
 
-exampleApp.directive('twToggle', function($parse) {
-	return twToggle($parse);
-});
-
-exampleApp.filter('twDate', function() {
-	return function(input) {
-		return twDate(input);
-	}
-});
