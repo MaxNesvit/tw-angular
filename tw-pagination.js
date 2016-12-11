@@ -1,7 +1,7 @@
-(function() {
+(function(currentScriptPath) {
     angular.module('twPagination', []).directive('twPagination', [function() {
         return {
-            templateUrl: '/partial/pagination.html',
+            templateUrl: currentScriptPath.replace('tw-pagination.js', 'pagination.html'),
             restrict: 'E',
             scope: {
                 itemCount: "=itemcount",
@@ -70,4 +70,10 @@
             }
         }
     }]);
-})();
+})(
+    (function () {
+        var scripts = document.getElementsByTagName("script");
+        var currentScriptPath = scripts[scripts.length - 1].src;
+        return currentScriptPath;
+    })()
+);
