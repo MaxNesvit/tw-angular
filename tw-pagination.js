@@ -35,7 +35,9 @@
                     var m = n + scope.pageCount - 1;
                     var pc = scope.totalPageCount();
                     if (m > pc) m = pc;
-                    if (m - n < scope.pageCount) n = n - (scope.pageCount - (m - n)) + 1;
+                    if (m - n < scope.pageCount) {
+                        n = n - (scope.pageCount - (m - n)) + 1;
+                    }
                     if (n < 1) n = 1;
                     for (i=n; i<=m; i++) {
                         scope.pages.push(i);
@@ -61,11 +63,12 @@
                     scope.setPages();
                     var firstItem = (scope.currentPage - 1) * scope.pageSize + 1;
                     var lastItem = firstItem + scope.pageSize - 1;
-                    if (lastItem > scope.itemCount) lastItem = scope.itemCount;
+                    if (lastItem > scope.itemCount) {
+                        lastItem = scope.itemCount;
+                    }
                     scope.change(scope.currentPage, firstItem, lastItem);
                 }
 
-                scope.totalPageCount();
                 scope.goTo(scope.currentPage);
             }
         }
