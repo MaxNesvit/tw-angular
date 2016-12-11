@@ -30,7 +30,7 @@
                     return true;
                 }
 
-                ngModel.$formatters.push(function (date) {console.log(date);
+                ngModel.$formatters.push(function (date) {
                     if (!date) return '';
                     var d = new Date(date);
                     var options = {

@@ -22,9 +22,5 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 		$scope.pageText += '</ul>';
 	}
 
-	$scope.goToPage(1, 1, 6);
-
-	window.scope = $scope;
-
 }]);
 
