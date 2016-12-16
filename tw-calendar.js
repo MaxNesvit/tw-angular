@@ -1,4 +1,4 @@
-(function() {
+(function($) {
     angular.module('twCalendar', []).directive('twCalendar', function() {
         return {
             restrict: 'A',
@@ -69,4 +69,4 @@
             },
         }
     });
-})();
+})(jQuery);

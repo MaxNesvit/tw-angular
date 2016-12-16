@@ -1,4 +1,4 @@
-(function() {
+(function($) {
     angular.module('twToggle', []).directive('twToggle', function($parse) {
         return {
             restrict: 'A',
@@ -21,4 +21,4 @@
             }
         }
     });
-})();
+})(jQuery);
