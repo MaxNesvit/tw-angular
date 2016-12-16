@@ -4,7 +4,7 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 
 	$scope.data = {
 		bool: false,
-		date: '2016-10-25',
+		date: "2016-12-01",
 		pagecount: 5,
 		pagesize: 6,
 	}

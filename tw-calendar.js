@@ -31,7 +31,7 @@
                 }
 
                 ngModel.$formatters.push(function (date) {
-                    if (!date) return '';
+                    if (!date || date == '0000-00-00') return '';
                     var d = new Date(date);
                     var options = {
                         year: 'numeric',
