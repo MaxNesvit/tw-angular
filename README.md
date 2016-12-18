@@ -1,5 +1,5 @@
 # tw-angular
-Directives an for angular
+Directives for AngularJs
 
 ## tw-pagination
 Represents information relevant to pagination. 
