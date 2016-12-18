@@ -6,7 +6,6 @@
             require: '?ngModel',
             scope: {
                 upload: '=upload',
-                error: '=error',
                 types: '=types',
                 maxsize: '=maxsize',
             },

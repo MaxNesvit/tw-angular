@@ -9,7 +9,7 @@
                 })
                 $(element).addClass('datepicker');
 
-                ngModel.$validators.invalidDate = function(modelValue, viewValue) {
+                ngModel.$validators.date = function(modelValue, viewValue) {
                     var value = modelValue || viewValue;
                     if (!value) return true;
                     var d = new Date();
