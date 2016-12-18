@@ -29,13 +29,6 @@
 
 		<div class="container">
 
-			<div class="alert alert-danger" ng-show="error.messages.length">
-				<b ng-bind="error.title"></b>
-				<ul>
-					<li ng-repeat="error in error.messages" ng-bind="error"></li>
-				</ul>
-			</div>
-
 			<h2>Pagination</h2>
 			<div class="row">
 				<div class="col-md-12" ng-bind-html="pageText">
@@ -58,17 +51,19 @@
 
 			<h2>Toggle button</h2>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-2">
 					<input type="checkbox" tw-toggle ng-model="data.bool" data-on="On" data-off="Off">
+				</div>
+				<div class="col-md-2">
 					Boolean value: <b>{{data.bool}}</b>
 				</div>
 			</div>
 
 			<h2>File upload</h2>
 			<div class="row">
-				<div class="col-md-2">
-					<input type="file" tw-file ng-model="data.file" upload="onUpload" error="onFileValidateError"
-						   options="{mimes: ['text/plain'], maxSize: 1000}">
+				<div class="col-md-6">
+					<input type="file" class="form-control" tw-file ng-model="data.file" upload="onUpload"
+						   types="['text/plain']" maxsize="1000">
 				</div>
 			</div>
 			<br/>

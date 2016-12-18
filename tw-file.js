@@ -1,4 +1,4 @@
-(function($) {
+(function() {
 
     angular.module('twFile', []).directive('twFile', function() {
         return {
@@ -7,52 +7,27 @@
             scope: {
                 upload: '=upload',
                 error: '=error',
-                options: '=options',
+                types: '=types',
+                maxsize: '=maxsize',
             },
             link: function (scope, element, attr, ngModel) {
 
-                scope.errors = [];
-
-                scope.addError = function(msg) {
-                    scope.errors.push(msg);
+                ngModel.$validators.type = function(modelValue, viewValue) {
+                    if (!element[0].files.length || !scope.types || !scope.types.length) return true;
+                    var file = element[0].files[0];
+                    return scope.types.indexOf(file.type) != -1;
                 }
 
-                scope.showErrors = function(file) {
-                    if (scope.error) {
-                        scope.error(file, scope.errors);
-                    }
-                    return scope.errors;
-                }
-
-                scope.validate = function(file) {
-
-                    scope.errors = [];
-
-                    if (!scope.options) return true;
-
-                    if (scope.options.mimes) {
-                        if (!~scope.options.mimes.indexOf(file.type)) {
-                            scope.addError('Wrong file type: ' + file.type);
-                        }
-                    }
-
-                    if (scope.options.maxSize) {
-                        if (+scope.options.maxSize < file.size) {
-                            scope.addError('File is too large, max file size is ' + scope.options.maxSize);
-                        }
-                    }
-
-                    return !scope.errors.length;
+                ngModel.$validators.size = function(modelValue, viewValue) {
+                    if (!element[0].files.length || !scope.maxsize) return true;
+                    var file = element[0].files[0];
+                    return file.size <= scope.maxsize;
                 }
 
                 $(element).on('change', function(event) {
-                    if (!element[0].files) return;
+                    if (!element[0].files.length) return;
 
                     var file = element[0].files[0];
-                    if (!scope.validate(file)) {
-                        return scope.showErrors(file);
-                    }
-
                     ngModel.$setViewValue(file);
 
                     if (scope.upload) {
@@ -64,4 +39,4 @@
         }
     });
 
-})(jQuery);
+})();
