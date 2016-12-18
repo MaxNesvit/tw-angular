@@ -10,6 +10,13 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 		file: null,
 	}
 
+	$scope.resetError = function() {
+		$scope.error = {
+			title: '',
+			messages: [],
+		};
+	}
+
 	$scope.items = [];
 	for (i=1; i<=50; i++) {
 		$scope.items.push('Item #' + i);
@@ -24,8 +31,19 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 	}
 
 	$scope.onUpload = function(file) {
+		$scope.$apply(function() {$scope.resetError();});
 		alert('File ' + file.name + ' is ready to upload');
 	}
+
+	$scope.onFileValidateError = function(file, errors) {
+		$scope.$apply(function() {
+			$scope.error.title = file.name;
+			$scope.error.messages = errors;
+		});
+
+	}
+
+	$scope.resetError();
 
 	window.scope = $scope;
 
