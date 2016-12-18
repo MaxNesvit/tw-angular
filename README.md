@@ -8,4 +8,7 @@ Represents information relevant to pagination.
 Input with standart ui datepicker. Input in the local format (like m/d/yyyy), model in the yyyy-mm-dd format. Validator for local format.
 
 ## tw-toggle
-Model for boolean variable as a bootstrap toggle button. 
+Directive for processing of a bootstrap toggle button. 
+
+## tw-file
+Directive for processing of a file input.
