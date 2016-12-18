@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="../tw-pagination.js"></script>
 		<script type="text/javascript" src="../tw-calendar.js"></script>
 		<script type="text/javascript" src="../tw-toggle.js"></script>
+		<script type="text/javascript" src="../tw-file.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</head>
 
@@ -41,10 +42,10 @@
 			<h2>Calendar</h2>
 			<div class="row">
 				<div class="col-md-2">
-				<input class="form-control" tw-calendar ng-model="data.date">
+					<input class="form-control" tw-calendar ng-model="data.date">
 				</div>
 				<div class="col-md-2">
-				Date: {{data.date}}
+					Date: {{data.date}}
 				</div>
 			</div>
 
@@ -56,6 +57,28 @@
 				</div>
 			</div>
 
+			<h2>File upload</h2>
+			<div class="row">
+				<div class="col-md-2">
+					<input type="file" tw-file ng-model="data.file" upload="onUpload">
+				</div>
+			</div>
+			<br/>
+			<b>File</b>
+			<table class="table">
+				<tr>
+					<td>Name</td>
+					<td>{{data.file.name}}</td>
+				</tr>
+				<tr>
+					<td>Size</td>
+					<td>{{data.file.size}}</td>
+				</tr>
+				<tr>
+					<td>Type</td>
+					<td>{{data.file.type}}</td>
+				</tr>
+			</table>
 		</div>
 		
 	</body>

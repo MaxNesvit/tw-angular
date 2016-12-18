@@ -1,4 +1,4 @@
-var exampleApp = angular.module('exampleApp', ['ngSanitize', 'twPagination', 'twCalendar', 'twToggle']);
+var exampleApp = angular.module('exampleApp', ['ngSanitize', 'twPagination', 'twCalendar', 'twToggle', 'twFile']);
 
 exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 
@@ -7,6 +7,7 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 		date: "2016-12-01",
 		pagecount: 5,
 		pagesize: 6,
+		file: null,
 	}
 
 	$scope.items = [];
@@ -21,6 +22,12 @@ exampleApp.controller('exampleCtrl', ['$scope', function ($scope) {
 		}
 		$scope.pageText += '</ul>';
 	}
+
+	$scope.onUpload = function(file) {
+		alert('File ' + file.name + ' is ready to upload');
+	}
+
+	window.scope = $scope;
 
 }]);
 

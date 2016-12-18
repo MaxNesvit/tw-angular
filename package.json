@@ -1,7 +1,7 @@
 {
   "name": "tw-angular",
   "description": "A set of directives for angular.",
-  "version": "0.0.2",
+  "version": "0.0.3",
 
   "dependencies": {
     "components/angular.js": "^1.3",
