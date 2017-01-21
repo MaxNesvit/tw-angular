@@ -9,7 +9,7 @@
                 })
                 $(element).addClass('datepicker');
 
-                ngModel.$validators.date = function(modelValue, viewValue) {
+                ngModel.$validators.calendar = function(modelValue, viewValue) {
                     var value = modelValue || viewValue;
                     if (!value) return true;
                     var d = new Date();
@@ -44,6 +44,7 @@
                 });
 
                 ngModel.$parsers.push(function(value) {
+                    if (!value) return '';
                     var d = Date.parse(value)
                     d = new Date(d);
                     d = d.getFullYear() + '-' + getMonth(d) + '-' + getDate(d);
